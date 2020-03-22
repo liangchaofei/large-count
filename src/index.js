@@ -1,0 +1,52 @@
+/*
+ * @Author: your name
+ * @Date: 2020-03-22 15:15:39
+ * @LastEditTime: 2020-03-22 15:16:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /large-number/src/index.js
+ */
+export default function add(a, b) {
+    let i = a.length - 1;
+    let j = b.length - 1;
+
+    let carry = 0;
+    let ret = '';
+    while (i >= 0 || j >= 0) {
+        let x = 0;
+        let y = 0;
+        let sum;
+
+        if (i >= 0) {
+            x = a[i] - '0';
+            i --;
+        }
+
+        if (j >= 0) {
+            y = b[j] - '0';
+            j --;
+        }
+
+        sum = x + y + carry;
+
+        if (sum >= 10) {
+            carry = 1;
+            sum -= 10;
+        } else {
+            carry = 0;
+        }
+        // 0 + ''
+        ret = sum + ret;
+    }
+
+    if (carry) {
+        ret = carry + ret;
+    }
+
+    return ret;
+}
+
+// add('999', '1');
+// add('1', '999');
+// add('123', '321');
+// console.log(add('999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999', '1'));
